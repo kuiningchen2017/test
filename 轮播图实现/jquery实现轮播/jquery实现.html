@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+
+        }
+        #prev,#next{
+            display: inline-block;
+            width:30px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: rgba(0,0,0,.1);
+        }
+        #circle{
+            position:absolute;
+            top:360px;
+            left:615px;
+        }
+        #circle ul {
+            overflow: hidden;
+        }
+        #circle ul li{
+            width: 15px;
+            height: 15px;
+            float: left;
+            margin:0 5px;
+            background-color: #ffffff;
+            border-radius: 15px;
+        }
+        #wrap{
+            /*外面包裹层 把多余的不是第一张的li下的图片 隐藏hidden起来*/
+            overflow: hidden;
+            width:790px;
+            height:340px;
+            margin:50px auto;
+            /*其父元素要开启相对定位*/
+            position: relative;
+        }
+        #wrap ul{
+            /*总共li的宽度 使ul下的li浮动后能在ul里面放下*/
+            /*width:3160px;*/
+            /*开启绝对定位 为了移动ul使图片动态移动*/
+            position: absolute;
+            /*修改ul的left值 切换下张图片*/
+            left:0px;
+        }
+        #wrap ul li{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<!--创建一个外层div-->
+    <div id="wrap">
+        <ul>
+            <li>
+                <img src="./img/1.jpg">
+            </li>
+            <li>
+                <img src="./img/2.jpg">
+            </li>
+            <li>
+                <img src="./img/3.jpg">
+            </li>
+            <li>
+                <img src="./img/4.jpg" >
+            </li>
+
+        </ul>
+    </div>
+    <div id="circle">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="click">
+        <div id="prev">
+            <a href="javascript:;">
+                <i> < </i>
+            </a>
+        </div>
+        <div id="next">
+            <a href="javascript:;">
+                <i> > </i>
+            </a>
+        </div>
+    </div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+//    var circle = document.getElementById('circle')
+//    var cirLi = circle.getElementsByTagName('li')
+//    console.log(cirLi)
+//    for(var i = 0 ; i<cirLi.length;i++){
+//        cirLi[i].onclick = function(){
+//            alert('hello')
+//        }
+//    }
+    $(function(){
+        //console.log($('img').length);
+        var imgLength = $('img').length
+        var ulWidth = imgLength*790 + 'px' //jquery操作可以不用+’px‘
+        //console.log(ulWidth)
+        $('#wrap > ul').width(ulWidth) // width 方法已经自动加了px
+        //console.log($('#wrap ul li:eq(3)').html())  获取ul下的第四个li里面的内容
+//        获取所有的圆点
+       // console.log($('#circle li'));
+        // 创建一个变量 来保存当前图片 的索引
+        var num = 0
+        //console.log($('#circle li').get(num))
+        //$($('#circle li').get(num)).css('background-color','black')
+
+        $('#circle li').each(function(index,ele){
+            //console.log($(this), this)
+//            alert($(this))
+//          给每个li添加一个索引 第一个li的索引为0 一次类推
+            this.index = index
+            //console.log(this.index)
+            var $this = $(this)
+            this.onclick = function(){
+                //给每个li绑定点击事件 得到点击的li的索引 赋值给外面图片的索引
+                num = this.index
+                setLi(ele)
+                //console.log($this)
+                $this.siblings().css('backgroundColor','')
+                // 修改图片的索引为num   num=被点击li的索引值 这样就达到了点击哪个小圆点切换到哪张图片了
+                //console.log(num)
+                // 每个li图片的宽度 790
+                var leftChange = -790*num + 'px'
+                //console.log(leftChange)
+                //console.log($('#wrap > ul'))
+                $('#wrap > ul').css('left',leftChange)
+            }
+            // 创建一个函数 专门用来设置导航点的状态
+            function setLi(ele){
+                //console.log('setLi执行了')
+                ele.style.backgroundColor = 'black'
+            }
+        })
+
+
+})
+</script>
+</body>
+</html>

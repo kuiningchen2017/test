@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [1,1,2,2,3,3,4,4]
+    function unique(arr){
+        var obj = {}
+        var newArr = []
+        for(var i = 0 ; i <arr.length ; i ++){
+            if(!obj[arr[i]]){
+                newArr.push(arr[i])
+                obj[arr[i]] = 1
+            }
+
+        }
+        return newArr
+    }
+
+    console.log(unique(arr))
+
+    var arr1 = [2,2,3,3,4,4,5,5,6]
+    for(var i = 0;i<arr1.length;i++){
+        for(var j =i+1;j<arr1.length;j++){
+            if(arr1[i]==arr1[j]){
+                arr1.splice(j,1)
+                j--
+            }
+        }
+    }
+    console.log(arr1)
+
+
+    var arr2 = [3,3,4,4,5,5]
+
+    function unique1(arr2){
+        var obj = {}
+        var newArr = []
+        for(var i=0;i<arr2.length;i++){
+            if(!obj[arr2[i]]){
+                newArr.push(arr2[i])
+                obj[arr2[i]]=1
+            }
+        }
+        return newArr
+    }
+    console.log(unique1(arr2))
+</script>
+</body>
+</html>

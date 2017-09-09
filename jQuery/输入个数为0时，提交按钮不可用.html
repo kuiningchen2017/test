@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*input{*/
+            /*border:none;*/
+            /*border-radius: 3px;*/
+            /*background-color: aquamarine;*/
+            /*color: white;*/
+            /*outline: none;*/
+        /*}*/
+        /*input:active{*/
+            /*border: 2px solid #ff9119;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <form class="tweet-box">
+        <textarea name="textMsg"></textarea>
+        <input type="submit" name="tweet" value="Tweet">
+    </form>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            console.log($('input'))
+            $('input').prop('disabled',true)
+            //$().on()跟的第一个参数是事件名称 也可以跟接下来会触发事件的元素 比如input的提交
+            $('textarea').on('input',function(){
+                if($(this).val().length > 0 ){
+                    $('input').prop('disabled',false)
+                }else{
+                    $('input').prop('disabled',true)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

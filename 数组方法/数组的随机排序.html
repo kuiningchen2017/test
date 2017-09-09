@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //console.log((Math.random()*10)); //0-10之间的随机数 包括浮点数
+    var rand = parseInt(Math.random()*10) // parseInt 取整 或者 去掉'px'单位时使用
+    //console.log(rand)
+
+
+
+    var arr = [1,2,3,4,5,6,7,8,9,10];
+    function randSort1(arr){
+        for(let i = 0,len = arr.length;i < len; i++ ){
+            var rand = parseInt(Math.random()*len);
+            //var rand = 5
+            var temp = arr[rand];
+            //console.log(arr[rand] + 'a')
+            arr[rand] = arr[i];
+            //console.log(arr[rand])
+            arr[i] = temp;
+        }
+        return arr;
+    }
+    //console.log(randSort1(arr));
+
+    var arr = [1,2,3,4,5,6,7,8,9,10];
+    arr.sort(function(){
+        return Math.random() - 0.5;
+        //return -1
+    })
+    console.log(arr);
+</script>
+</body>
+</html>

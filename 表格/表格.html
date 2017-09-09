@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #table{
+            width:500px;
+            text-align: center;
+            /*border:1px solid black;*/
+        }
+        tr{
+            border:1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<table id="table">
+    <!--<caption>电子器材库存</caption>-->
+    <tr>
+        <th>产品名称</th>
+        <th>品牌</th>
+        <th>库存</th>
+        <th>入库事件</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>耳机</td>
+        <td>meizu</td>
+        <td><span>1110</span><input type="text" style="display:none"></td>
+        <td>13.09.11</td>
+        <td><button>删除</button></td>
+    </tr>
+    <tr>
+        <td>手机</td>
+        <td>小米</td>
+        <td>1110</td>
+        <td>13.09.11</td>
+        <td><button>删除</button></td>
+    </tr>
+    <tr>
+        <td>电脑</td>
+        <td>software</td>
+        <td>1110</td>
+        <td>13.09.11</td>
+        <td><button>删除</button></td>
+    </tr>
+</table>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    var table = document.getElementById('table')
+//    var children = table.childNodes
+//    console.log(children)
+    // 获取页面中的某一个td
+    var tds = document.getElementsByTagName('td')
+    console.log(tds)
+
+    for(var i=0;i<tds.length;i++){
+        tds[i].onclick = function(){
+            //let span = this.firstElementChild
+            let span = this.firstChild
+            //console.log(span)
+            console.log(span.firstChild);
+            span.style.display = 'none'
+            let input = this.lastChild
+            console.log(input)
+            input.style.display = 'block'
+            console.log(input.value)
+            let value = span.firstChild
+
+            value = value.toString()
+            console.log(value)
+            //input.placeholder = value
+            //console.log(span.value);
+            //input.value = value
+        }
+    }
+
+
+   //得到每个button按钮
+    var btn = document.getElementsByTagName('button')
+    for (var i=0;i<btn.length;i++){
+        btn[i].onclick = function(){
+            console.log(1)
+            //console.log($('tr:eq(1)')[0]);
+            //$('tr:eq(1)').remove()
+            var tr = this.parentNode.parentNode
+            var table = tr.parentNode
+            table.removeChild(tr)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+//    var str = 'wusongtech_gg'
+//    function unique(str) {
+//        var obj = {}
+//        for (let i = 0; i < str.length; i++) {
+//
+//            var key = str[i]
+//            if (obj[key]) {
+//                obj[key]++
+//                console.log(obj)
+//            } else {
+//                obj[key] = 1
+//            }
+//           console.log(obj)
+//        }
+//        //找到出现次数最多的字符串,及次数
+//        var maxCount=0;//假设是出现次数最多的次数
+//        var maxString="";//假设这个字符串是次数出现最多的字符串
+//        for(var key in obj){
+//            if(maxCount<obj[key]){
+//                maxCount=obj[key];//保存最大的次数
+//                maxString=key;
+//            }
+//        }
+//        return "该字母:"+maxString+"出现了"+maxCount+"次";
+//
+//    }
+//    console.log(unique(str));
+</script>
+</body>
+</html>

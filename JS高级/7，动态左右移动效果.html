@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #left{
+            width:200px;
+            margin:50px 0 0 300px;
+        }
+        #right{
+            width:200px;
+        }
+        #btnBox{
+            display: inline-block;
+            width:100px;
+            height:300px;
+
+        }
+        button{
+            display: block;
+            margin:10px auto;
+        }
+    </style>
+</head>
+<body>
+<select name="start" id="left" multiple="multiple" size="10">
+    <option value="lyf">李易峰</option>
+    <option value="lyf" selected>陈奎宁</option>
+    <option value="lyf">张大宝</option>
+    <option value="lyf">张杰</option>
+    <option value="lyf">杨幂</option>
+    <option value="lyf">唐嫣</option>
+    <option value="lyf">邓超</option>
+</select>
+<div id="btnBox">
+    <button id="add">&gt;</button>
+    <button id="allAdd">&gt;&gt;</button>
+    <button id="back">&lt;</button>
+    <button id="allBack">&lt;&lt;</button>
+</div>
+<select name="str" id="right" size="11">
+
+</select>
+<script>
+    //console.log(Document,Node,Element)
+    var left = document.getElementById('left')
+    var right = document.getElementById('right')
+
+    document.getElementById('add').onclick = function(){
+        console.log(1)
+        var options = document.getElementsByTagName('option')
+        for(var i=0;i<options.length;i++){
+            if(options[i].selected){
+                right.appendChild(options[i])
+                i--
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//    var str = {
+//        w:1,
+//        h:1,
+//        a:1,
+//        t:1
+//    }
+    for(var key in str){
+       // console.log(key)
+    }
+    var str = "what are you";
+
+    function unique(str){
+        // 该变量的作用是用来存储字符串对应的次数
+        var obj = {}
+        // 遍历字符串
+        for(var i=0;i<str.length;i++){
+            // key中存储的是每一个字符串
+            var key = str[i]
+            if(obj[key]){//判断对象中有没有这个key属性对应的值
+                obj[key]++
+            }else{
+                obj[key]=1 //第一次进else boj[w] = 1
+            }
+        }
+        console.log(obj)
+        //找到出现次数最多的字符串和次数
+        var maxString = ''//假设这个字符串是出现次数最多的字符串
+        var maxCount = 0 //假设是出现次数最多的次数
+        for(var key in obj){
+            if(obj[key]>maxCount){
+                maxCount = obj[key]
+                maxString = key
+            }
+        }
+        return "该字母:"+maxString+"出现了"+maxCount+"次";
+    }
+    console.log(unique(str));
+</script>
+</body>
+</html>

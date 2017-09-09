@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+               width:600px;
+               height:300px ;
+               margin:0 auto;
+               border-collapse: collapse;
+           }
+
+        td{
+            text-align: center;
+        }
+        .info{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+  <table>
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>Column heading</th>
+              <th>Column heading</th>
+              <th>Column heading</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>2</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+        </tr>
+      </tbody>
+  </table>
+  <script>
+      var tbody = document.getElementsByTagName('tbody')[0]
+      var trs = tbody.getElementsByTagName('tr')
+      //console.log(trs)
+      for(var i=0;i<trs.length;i++){
+          if(i%2 === 0){
+              trs[i].className = 'info'
+          }
+      }
+  </script>
+</body>
+</html>

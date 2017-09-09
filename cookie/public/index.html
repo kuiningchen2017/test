@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">get请求得到cookie</button>
+    <button id="btn2">post请求得到cookie</button>
+    <div id="box"></div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $('#btn1').click(function(){
+            console.log(1)
+            var xhr = new XMLHttpRequest //创建ajax的核心对象 构造函数的实例对象
+            xhr.open('get','/get?xxx=swk') // 设置请求信息
+            xhr.send()
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if (xhr.status === 200){
+                        var data = xhr.responseText
+                        $('#box').html(data)
+                    }
+                }
+            }
+        })
+        $('#btn2').click(function(){
+            $.post(
+                '/post',
+                {xxx:'post请求给服务器的内容'},
+                function(data){
+                    alert(data)
+                }
+            )
+        })
+    </script>
+</body>
+</html>

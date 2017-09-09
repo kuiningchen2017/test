@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            min-width: 320px;
+            max-width: 640px;
+            margin:0 auto;
+        }
+        .wrapper:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        .layout{
+            width:33.3333%;
+            height: 200px;
+            float: left;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            background-color: yellow;
+        }
+        .box3{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="layout box1"></div>
+    <div class="layout box2"></div>
+    <div class="layout box3"></div>
+</div>
+</body>
+</html>

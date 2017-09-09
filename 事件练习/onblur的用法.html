@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" name="username">
+<script>
+    // onblur 失去焦点时触发事件
+    var input = document.getElementsByTagName('input')[0]
+    input.onblur = function(){
+        alert(this.value)
+    }
+</script>
+</body>
+</html>

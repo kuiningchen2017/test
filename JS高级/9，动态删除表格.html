@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width:600px;
+            height:300px ;
+            margin:0 auto;
+            border-collapse: collapse;
+        }
+        tr td{
+            width:25%;
+        }
+        th{
+            border: 1px solid black;
+        }
+        tr td{
+            border: 1px solid black;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Column contents</td>
+        <td>Column content</td>
+        <td><button class="btn" onclick="remove(this)">删除</button></td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    function remove(ele){
+        //var tr = ele.parentNode.parentNode
+        //var tbody = tr.parentNode
+        //tbody.removeChild(tr)
+    }
+    var btns = document.getElementsByClassName('btn')
+    console.log(btns)
+    for(var i = 0;i<btns.length;i++){
+        btns[i].onclick = function(){
+            console.log(1)
+            var tr =  this.parentNode.parentNode
+            var tbody = tr.parentNode
+            tbody.removeChild(tr)
+        }
+    }
+</script>
+</body>
+</html>

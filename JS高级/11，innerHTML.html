@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>第一个li标签</li>
+</ul>
+<script>
+    var ul = document.getElementsByTagName('ul')[0]
+    var html = ul.innerHTML
+    html += '<li>第二个li标签</li>'
+    ul.innerHTML = html
+
+</script>
+</body>
+</html>

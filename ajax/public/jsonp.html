@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">发送请求</button>
+<button id="btn2">jquery的getJSON方法</button>
+<div id="box"></div>
+<script src="jquery-1.12.4.js"></script>
+
+<script>
+    $(function(){
+        $('#btn').click(function(){
+//          同源策略
+            //如果我们发送的请求违反了同源策略，浏览器不会将数据返回给Ajax
+//            $.get(
+//                //'https://api.douban.com/v2/movie/in_theaters',
+//                'http://localhost:3000/testAjax',
+//                {adimn:'ckn',password:123123},
+//                function(data){
+//                    alert(data.name)
+//                }
+//            )
+
+            // 可以通过JSONP来跳过同源策略，向其他源发送请求
+            //在网页中我们可以通过script标签 img标签 iframe标签来访问外部资源其他源的请求
+
+            //创建一个新的script标签
+            var script = document.createElement('script')
+            //为script标签设置src属性
+            script.src = 'https://api.douban.com/v2/movie/in_theaters?callback=fun'
+            //将script标签添加到body中
+            document.body.appendChild(script);
+        })
+        $('#btn2').click(function(){
+            $.getJSON(
+                'https://api.douban.com/v2/movie/in_theaters?callback=?',
+                //{'我是请求参数'},
+                function(data){
+                    $('#box').html(JSON.stringify(data))
+                }
+            )
+        })
+    })
+    function fun(data){
+        $('#box').html(JSON.stringify(data))
+        //alert(data)
+    }
+</script>
+</body>
+</html>

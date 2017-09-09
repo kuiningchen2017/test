@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #imglist{
+            list-style: none;
+        }
+        #wrap{
+            width:790px;
+            height:340px;
+            margin:50px auto;
+            /*给包裹成开启overflow：hidden 而不是ul 因为ul的宽度正好等于图片宽度的和*/
+            overflow:hidden;
+            position: relative;
+        }
+        #imglist{
+            width:3160px;
+            position: absolute;
+            top:0px;
+        }
+        #imglist li{
+            float: left;
+        }
+        /*设置导航点*/
+        #nav{
+            /*开启绝对定位*/
+            position: absolute;
+            bottom:15px;
+            left:330px;
+        }
+        #nav a{
+            float:left;
+            width:15px;
+            height:15px;
+            /*设置一个背景颜色*/
+            background-color: red;
+            /*设置外边距*/
+            margin:0 5px;
+            /*设置透明效果*/
+            opacity:0.8;
+            /*ie8兼容opacity*/
+            filter:alpha(opacity=80)
+
+        }
+        #nav a:hover{
+            /*鼠标移入背景颜色变黑*/
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul id="imglist">
+        <li>
+            <img src="./img/1.jpg">
+        </li>
+        <li>
+            <img src="./img/2.jpg">
+        </li>
+        <li>
+            <img src="./img/3.jpg">
+        </li>
+        <li>
+            <img src="./img/4.jpg">
+        </li>
+    </ul>
+    <!--创建导航点-->
+    <div id="nav">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+   window.onload = function(){
+       //设置ul的宽度 不能手动写死
+       // 先获取ul
+       var imglist = document.getElementById('imglist')
+       // 获取所有的img标签
+       var imgs = document.getElementsByTagName('img')
+       // 设置ul的宽度
+       imglist.style.width = imgs.length*790 + 'px'
+
+   }
+</script>
+</body>
+</html>

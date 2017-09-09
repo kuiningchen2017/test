@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:300px;
+            height:300px;
+            line-height: 300px;
+            font-size: 60px;
+        }
+        .box1{
+            width:100px;
+            height:100px;
+            line-height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    div的内容
+</div>
+<script>
+    var div = document.getElementsByTagName('div')[0]
+    alert(typeof div.className) //得到的是字符串string  不是对象不能通过 .属性名的形式获取css属性值
+    div.className = 'box1'
+    console.log( typeof div.style) //得到的就是对象 可以获取css属性值
+    div.style.font = 'bold 20px "微软雅黑"'
+
+    // 在实际操作中 我们要获取元素当前的所有样式 上述两个方法有局限性 只能获取class 或 style的样式
+    if(window.getComputedStyle){
+        //其他浏览器
+        console.log(getComputedStyle(div, null).backgroundColor);
+    }else{
+        //ie浏览器
+        console.log(div.currentStyle.backgroundColor);
+    }
+
+</script>
+</body>
+</html>

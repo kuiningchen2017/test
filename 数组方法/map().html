@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let numbers = [1,5,6,9]
+    let dobules = numbers.map((x)=>{
+        return x*2
+    })
+    console.log(numbers)
+    console.log(dobules)
+
+    var kvArray = [
+        {key:1,value:10},
+        {key:2,value:20},
+        {key:3,value:30}
+    ]
+    var formattdeArray = kvArray.map(function(obj){
+        var robj={}
+        robj[obj.key] = obj.value
+        return robj
+    })
+    console.log(formattdeArray)
+</script>
+</body>
+</html>

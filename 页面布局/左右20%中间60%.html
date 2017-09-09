@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            width:960px;
+            margin:0 auto;
+            height:100%;
+        }
+        #wrap{
+            height:100%;
+
+        }
+        .left,.content,.right{
+            height:100%;
+            float: left;
+            text-align: center;
+        }
+
+        .left,.right{
+            width:20%;
+        }
+        .content{
+            /*width:60%;*/
+            width: calc(60% - 40px);
+            margin:0 20px;
+            /*box-sizing:border-box;*/ /*设置外边距的时候border-box就没作用了*/
+
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="left">left</div>
+    <div class="content">content</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

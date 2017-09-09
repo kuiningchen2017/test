@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tweet-box{
+            width: 600px;
+            height:1000px;
+            margin: 0 auto;
+        }
+        textarea{
+            width:50%;
+            display: block;
+            margin:0 auto;
+        }
+        .word-count,input{
+            float: right;
+            margin:0 10px;
+        }
+    </style>
+</head>
+<body>
+<form class="tweet-box">
+    <textarea name="textMsg"></textarea>
+
+
+    <input disabled type="submit" name="tweet" value="Tweet">
+    <span class="word-count">140</span>
+
+</form>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    let form = $('.tweet-box')[0] //jQuery对象转换为dom对象
+//  在form表单中 可以通过form.子元素的name的属性值来获取当前子元素
+    console.log(form.textMsg)
+
+    $wordCount = $('.word-count')
+
+    $(form.textMsg).on('input',function(){
+        let wordsCount = this.value.length
+        $wordCount.text(140-wordsCount)
+        form.tweet.disabled = $(this).val().length <=0
+        form.tweet.disabled = wordsCount >= 140;
+    })
+
+</script>
+</body>
+</html>

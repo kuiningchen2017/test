@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+<script>
+    var newLi = document.createElement('li')
+    var liText = document.createTextNode('新创建的li的内容')
+    newLi.appendChild(liText)
+    //console.log(newLi)
+    var ul = document.getElementsByTagName('ul')[0]
+    ul.insertBefore(newLi,document.getElementsByTagName('li')[1])
+
+    //删除节点
+    var li = document.getElementsByTagName('li')[0]
+   ul.removeChild(li)
+</script>
+</html>

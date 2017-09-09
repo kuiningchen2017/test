@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--poster="广告.img"  autoplay="autoplay"-->
+<video class="video" src="http://www.w3school.com.cn/i/movie.ogg" controls="controls" >
+    您的浏览器不支持 video 标签。
+</video>
+<button class="btnPlay">播放</button>
+<button class="btnStop">暂停</button>
+<!--音频  loop循环播放 preload=‘metadata’加载一部分 移动端节省流量-->
+<audio src="./audio/新录音%201.mp3"
+       controls="controls"
+       autoplay="autoplay"
+       loop="loop"
+       preload="metadata"
+>
+    您的浏览器不支持 audio 标签。
+</audio>
+<script src="timeFormatter.js"></script>
+<script>
+    var video = document.getElementsByClassName('video')[0]
+    console.log(video)
+    var btnP = document.getElementsByClassName('btnPlay')[0]
+    console.log(btnP)
+    var btnS = document.getElementsByClassName('btnStop')[0]
+
+    btnP.onclick = function(){
+        video.play()
+    }
+    btnS.onclick = function () {
+        video.pause()
+    }
+//    播放过程中实时触发
+    video.ontimeupdate = function(event){
+        var currentTime = event.target.currentTime
+        // 当前播放的时长
+        console.log(currentTime)
+        //格式化后的时间 00:00:00 YYYY:MM:DD hh:mm:ss
+        console.log(timeFormatter(currentTime))
+
+//        播放过程中 如果暂停播放video.paused返回true 否则返回false
+        console.log(video.paused)
+//        .......... 如果静音返回true 没静音是false
+        console.log(video.muted)
+//        .......... 播放完毕返回true 播放中返回false
+        console.log(video.ended)
+    }
+//    声音变化时触发
+    video.onvolumechange = function(ev){
+        console.log(ev)
+        //声音的值 0-1
+        console.log(ev.target.volume)
+    }
+//    源数据加载完毕后触发 metadata源数据
+    video.onloadmetadata = function(ev){
+        //播放总时长
+        console.log(ev.target.duration);
+        //格式化时间
+        console.log(timeFormatter(ev.target.duration));
+    }
+</script>
+</body>
+</html>

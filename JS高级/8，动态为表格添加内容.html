@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width:600px;
+            height:300px ;
+            margin:0 auto;
+            border-collapse: collapse;
+        }
+        tr td{
+            width:25%;
+        }
+        th{
+            border: 1px solid black;
+        }
+        tr td{
+            border: 1px solid black;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<button id="btn" >添加 </button>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Column contents</td>
+        <td>Column content</td>
+        <td>Column content</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    var btn = document.getElementById('btn')
+    btn.onclick = function(){
+        var tbody = document.getElementsByTagName('tbody')[0]
+        var trs = tbody.getElementsByTagName('tr')
+        var lastTr = trs[trs.length - 1]
+
+        var tds = lastTr.getElementsByTagName('td')
+
+        //var trs = tbody.childNodes 通过节点的方式获取有空白节点的问题
+        //console.log(trs)
+
+
+        var newTr = document.createElement('tr')
+
+        // 表示计数td是第几列 动态改动td使增加的td也会改变
+        var count = 0
+        function addTd(newTr,count){
+            count++
+            console.log(count)
+            var newTd = document.createElement('td')
+            var tdContent = lastTr.getElementsByTagName('td')[count].firstChild
+            var tdText = document.createTextNode(tdContent.data)
+            //console.log(tdText2)
+            newTd.appendChild(tdText)
+
+            newTr.appendChild(newTd)
+        }
+        var newTd1 = document.createElement('td')
+        var tdCount = lastTr.getElementsByTagName('td')[0].firstChild
+        //console.log(tdCount)
+        for(var n in tdCount){
+            //console.log(n)     for..in列举对象中的属性
+            //console.log(tdCount.data)
+        }
+        var tdText1 = document.createTextNode(tdCount.data)
+
+        //console.log(tdText)
+        newTd1.appendChild(tdText1)
+
+//        var newTd2 = document.createElement('td')
+//        var tdContent = lastTr.getElementsByTagName('td')[1].firstChild
+//        var tdText2 = document.createTextNode(tdContent.data)
+//        //console.log(tdText2)
+//        newTd2.appendChild(tdText2)
+//
+//        var newTd3 = document.createElement('td')
+//        var tdContent = lastTr.getElementsByTagName('td')[2].firstChild
+//        var tdText3 = document.createTextNode(tdContent.data)
+//        //console.log(tdText2)
+//        newTd3.appendChild(tdText3)
+//
+//        var newTd4 = document.createElement('td')
+//        var tdContent = lastTr.getElementsByTagName('td')[3].firstChild
+//        var tdText4 = document.createTextNode(tdContent.data)
+//        //console.log(tdText2)
+//        newTd4.appendChild(tdText4)
+
+
+        newTr.appendChild(newTd1)
+        for(var i=0;i<tds.length-1;i++){
+            addTd(newTr,count)
+        }
+
+
+//        newTr.appendChild(newTd2)
+//        newTr.appendChild(newTd3)
+//        newTr.appendChild(newTd4)
+
+        tbody.appendChild(newTr)
+    }
+</script>
+</body>
+</html>
